@@ -4,6 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Produto</title>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vídeo com Botão de Compra</title>
+<style>
+    #buyButton {
+        display: none; /* Esconde o botão inicialmente */
+        position: absolute; /* Posição absoluta para sobrepor o vídeo */
+        bottom: 20px; /* Posiciona na parte inferior do contêiner do vídeo */
+        left: 20px; /* Distância da esquerda do contêiner do vídeo */
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .video-container {
+        position: relative; /* Permite o posicionamento absoluto do botão em relação a este contêiner */
+    }
+</style>
+</head>
+<body>
+
+<div class="video-container">
+    <video id="videoElement" width="640" controls>
+        <source src="seu_video_aqui.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+    <button id="buyButton" onclick="alert('Coloque aqui sua lógica de compra ou redirecionamento.');">Comprar</button>
+</div>
+
+<script>
+    // Função para mostrar o botão após 20 minutos de vídeo
+    function showBuyButtonAfterDelay() {
+        const video = document.getElementById('videoElement');
+        const buyButton = document.getElementById('buyButton');
+
+        video.ontimeupdate = function() {
+            if (video.currentTime >= 1200) { // 1200 segundos = 20 minutos
+                buyButton.style.display = 'block';
+            }
+        };
+    }
+
+    // Chama a função quando a página carrega
+    window.onload = showBuyButtonAfterDelay;
+</script>
+
+</body>
+</html>
+
     <style>
         body {
             font-family: Arial, sans-serif;
